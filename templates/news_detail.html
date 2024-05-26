@@ -1,0 +1,49 @@
+{% extends 'navigation.html' %}
+{% block news_detail %}
+    <style>
+        .image-contain {
+            display: flex;
+            justify-content: center; /* Вирівнює зображення по горизонталі */
+            border-radius: 40px;
+            float: left;
+            width: 40%;
+            margin-inline: 60px;
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+        .image-contain img{
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(187, 138, 138, 0.5);
+        }
+        /* Стилі для тексту новини */
+        .news-detail p {
+            flex: 1;
+            margin-top: 80px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: justify;
+            margin-inline: 80px;
+            font-size: 18px;
+            font-family: "Times New Roman";
+        }
+
+        h1 {
+            text-align: center;
+            margin-inline: 50px;
+            font-family: "Times New Roman";
+        }
+        .date{
+            color: #575757;
+        }
+    </style>
+    <div class="news-detail" style="margin-top: 150px;">
+        <h1>{{ news_item.Title }}</h1>
+        <div class="image-contain">
+            <img src="{{ news_item.MediaPath }}" alt="Image" class="mag">
+        </div>
+        <p>{{ news_item.Text }}</p>
+        <p class="date">{{ news_item.Date }}</p>
+    </div>
+{% endblock %}

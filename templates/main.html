@@ -1,0 +1,55 @@
+{% extends 'navigation.html' %}
+
+{% block main %}
+    <form method="post">
+        <input id="menu__toggle" type="checkbox">
+        <label class="menu_btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <ul class="menu__box">
+            <li><p class="menu__title">Фільтр за датою</p></li>
+            <li><hr></li>
+            <li><label for="start_date" class="menu__item">Початкова дата:</label></li>
+            <li><input type="date" id="start_date" name="start_date" class="menu_input"></li>
+            <li><label for="end_date" class="menu__item">Кінцева дата:</label></li>
+            <li><input type="date" id="end_date" name="end_date" class="menu_input"></li>
+            <li><hr></li>
+            <li><button class="menu_submit">Пошук</button></li>
+            </ul>
+    </form>
+    <div class="news-container" style="margin-top: 150px;">
+        <div class="news-list">
+            <ul>
+                {% for news_item in news %}
+                    {% if loop.index0 % 2 == 0 %}
+                <li class="news-item">
+                    <a href="{{ url_for('news_detail', news_id=news_item.NewsID) }}">
+                        <div class="image-container">
+                            <img src="{{ news_item.MediaPath }}" alt="Image">
+                        </div>
+                        <h4>{{ news_item.Title }}</h4>
+                        <p>{{ news_item.Date }}</p>
+                    </a>
+                </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for news_item in news %}
+                    {% if loop.index0 % 2 != 0 %}
+                <li class="news-item">
+                    <a href="{{ url_for('news_detail', news_id=news_item.NewsID) }}">
+                        <div class="image-container">
+                            <img src="{{ news_item.MediaPath }}" alt="Image">
+                        </div>
+                        <h4>{{ news_item.Title }}</h4>
+                        <p>{{ news_item.Date }}</p>
+                    </a>
+                </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
