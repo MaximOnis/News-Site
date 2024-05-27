@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, MetaData, Table, select, Column, Integer, 
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 
-engine = create_engine('mysql://root:maximonis@localhost:3306/newsdb')
+engine = create_engine('sqlite:///BaseNews.db')
 
 metadata = MetaData()
 DBSession = sessionmaker(bind=engine)
@@ -18,8 +18,7 @@ class News(Base):
     Title = Column(String)
     Text = Column(String)
     MediaPath = Column(String)
-    Date = Column(Date, index=True)
+    Date = Column(String)
 
 
-# Створення всіх таблиць, які визначені у базі
 Base.metadata.create_all(engine)
