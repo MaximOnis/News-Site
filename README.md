@@ -28,7 +28,7 @@ A web application for viewing and filtering news by topic. This project was deve
 - model.py — data model and database connection settings.
 - templates/ — HTML page templates.
 - static/ — static files and resources.
-- tests/ — test files.
+- tests/ — testing files.
 - BaseNews.db — news database.
 - requirements.txt — list of project dependencies.
 
